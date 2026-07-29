@@ -1,5 +1,6 @@
 import { flota } from "@/data/flota";
 import AutoIlustracion, { coloresFlota } from "../AutoIlustracion";
+import GaleriaAuto from "../GaleriaAuto";
 import {
   IconoPersona,
   IconoValija,
@@ -34,22 +35,34 @@ export default function Flota() {
                 key={auto.id}
                 className="flex flex-col overflow-hidden rounded-2xl border border-borde bg-noche-media transition-shadow hover:shadow-xl hover:shadow-black/50"
               >
-                <div
-                  className="relative"
-                  style={{ backgroundColor: paleta.fondo }}
-                >
-                  {auto.destacado && (
-                    <span className="absolute left-4 top-4 rounded-full bg-frambuesa px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
-                      Más elegido
+                {/* Con fotos reales van las fotos; si no, la ilustración. */}
+                {auto.fotos?.length ? (
+                  <div className="relative">
+                    <span className="absolute left-3 top-3 z-10 rounded-full bg-noche/80 px-3 py-1 text-xs font-bold uppercase tracking-wide text-crema backdrop-blur-sm">
+                      Foto real
                     </span>
-                  )}
-                  <AutoIlustracion
-                    categoria={auto.id}
-                    color={paleta.color}
-                    colorOscuro={paleta.colorOscuro}
-                    className="h-44 w-full"
-                  />
-                </div>
+                    <GaleriaAuto fotos={auto.fotos} nombre={auto.nombre} />
+                  </div>
+                ) : (
+                  /* Mismo 4:3 que la galería, para que todas las tarjetas
+                     arranquen con la imagen a la misma altura. */
+                  <div
+                    className="relative aspect-[4/3] w-full"
+                    style={{ backgroundColor: paleta.fondo }}
+                  >
+                    {auto.destacado && (
+                      <span className="absolute left-4 top-4 z-10 rounded-full bg-frambuesa px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
+                        Más elegido
+                      </span>
+                    )}
+                    <AutoIlustracion
+                      categoria={auto.id}
+                      color={paleta.color}
+                      colorOscuro={paleta.colorOscuro}
+                      className="absolute inset-0 h-full w-full"
+                    />
+                  </div>
+                )}
 
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className="text-xl font-bold text-crema">

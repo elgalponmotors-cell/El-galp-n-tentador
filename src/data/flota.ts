@@ -6,6 +6,13 @@
  * mostrar: la tarjeta dice "Consultar precio" en lugar de inventar un número.
  */
 
+export type FotoAuto = {
+  /** Ruta dentro de /public. */
+  src: string;
+  /** Descripción para lectores de pantalla y para cuando la foto no carga. */
+  alt: string;
+};
+
 export type CategoriaAuto = {
   /** Se usa en la URL del ancla y como clave de la ilustración. */
   id: "economico" | "sedan" | "suv" | "minivan" | "convertible";
@@ -20,6 +27,15 @@ export type CategoriaAuto = {
   /** Precio por día en USD. `null` muestra "Consultar precio". */
   precioDesde: number | null;
   destacado?: boolean;
+  /**
+   * Fotos reales de la unidad. Si están, la tarjeta muestra la galería; si no,
+   * cae en la ilustración vectorial de `AutoIlustracion.tsx`.
+   *
+   * Para agregar fotos a otra categoría: poné los originales en
+   * `scripts/fotos-originales/`, sumalos a `scripts/preparar-fotos.mjs` y
+   * corré `node scripts/preparar-fotos.mjs`.
+   */
+  fotos?: FotoAuto[];
 };
 
 export const flota: CategoriaAuto[] = [
@@ -53,12 +69,26 @@ export const flota: CategoriaAuto[] = [
     nombre: "SUV",
     descripcion:
       "Altura, baúl grande y manejo cómodo. Perfecta para familias o para escaparse a los Cayos con equipaje.",
-    ejemplos: "Toyota RAV4, Nissan Rogue o similar",
+    /**
+     * ⚠️ TODO: CONFIRMAR EL MODELO.
+     * Las fotos de abajo son de un Hyundai Santa Fe (el logo se ve en la
+     * parrilla, en el portón y en el volante), pero se pidió publicarlo como
+     * "Kia Sportage 2023". Hasta aclararlo va la descripción genérica, para no
+     * anunciar un modelo que no coincide con la foto.
+     */
+    ejemplos: "SUV mediana, 5 asientos",
     pasajeros: 5,
     valijas: 4,
     puertas: 5,
     transmision: "Automática",
-    precioDesde: null,
+    precioDesde: 70,
+    fotos: [
+      { src: "/flota/suv-frente.webp", alt: "Frente del SUV, con la parrilla y los faros" },
+      { src: "/flota/suv-lateral.webp", alt: "Perfil lateral completo del SUV" },
+      { src: "/flota/suv-tres-cuartos.webp", alt: "Vista de tres cuartos trasera del SUV" },
+      { src: "/flota/suv-trasera.webp", alt: "Parte trasera del SUV, con el portón y las luces" },
+      { src: "/flota/suv-interior.webp", alt: "Interior del SUV: tablero, butacas de cuero y techo panorámico" },
+    ],
   },
   {
     id: "minivan",

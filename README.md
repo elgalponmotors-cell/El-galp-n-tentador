@@ -33,6 +33,13 @@ Los modelos de ejemplo y los precios. Cada categoría tiene:
 - `ejemplos` — los modelos reales que tengas.
 - `precioDesde` — el precio por día en dólares. Si lo dejás en `null`, la tarjeta
   muestra *"Consultá el precio"* en vez de inventar un número.
+- `fotos` — fotos reales de la unidad (ver más abajo).
+
+> ⚠️ **Pendiente en la categoría SUV:** las fotos cargadas son de un **Hyundai
+> Santa Fe** (el logo se ve en la parrilla, en el portón y en el volante), pero
+> se pidió publicarlo como *Kia Sportage 2023*. Hasta aclarar cuál es, el campo
+> `ejemplos` dice solo *"SUV mediana, 5 asientos"*: anunciar una marca que no
+> coincide con la foto genera reclamos al momento de la entrega.
 
 ### 3. `src/data/faq.ts`
 
@@ -147,15 +154,41 @@ El script le quita el fondo negro al JPEG con un flood fill desde los bordes:
 la palmera y el skyline también son negros, así que un umbral simple los
 borraría; el contorno crema del escudo corta la propagación.
 
+### Las fotos de la flota
+
+Cada categoría puede tener fotos reales. Si las tiene, la tarjeta muestra una
+**galería** (foto grande + miniaturas para cambiarla). Si no, cae en la
+ilustración vectorial. Hoy la SUV tiene fotos y las otras cuatro, ilustración.
+
+**Para agregar fotos a una categoría:**
+
+1. Poné los originales en `scripts/fotos-originales/`.
+2. Agregalos a la lista `FOTOS` de `scripts/preparar-fotos.mjs`. El campo `foco`
+   es la altura sobre la que se centra el recorte (0 = arriba, 1 = abajo);
+   se usa porque en las fotos verticales el auto casi nunca está en el medio.
+3. Corré el script:
+
+```bash
+npm install --no-save playwright && npx playwright install chromium
+node scripts/preparar-fotos.mjs
+```
+
+4. Sumá las rutas al campo `fotos` de la categoría en `src/data/flota.ts`, con
+   su `alt` describiendo qué se ve.
+
+El script recorta a 4:3, comprime a WebP y **no agranda ninguna foto**: sale al
+ancho que realmente tiene, con un techo de 1000 px.
+
+> 📸 **Mandá las fotos en tamaño original.** De las cinco cargadas, cuatro
+> llegaron como miniaturas de 270×360 px (así las comprime WhatsApp o el
+> compartir de iPhone). Se ven aceptables en las miniaturas, pero borrosas al
+> agrandarlas. Si las reenviás desde el carrete en tamaño original y volvés a
+> correr el script, quedan nítidas.
+
 ### Los dibujos de los autos
 
-Las ilustraciones de la flota son **vectores dibujados a mano** (`AutoIlustracion.tsx`),
-no fotos: se ven nítidas en cualquier pantalla, pesan pocos KB y mantienen el
-mismo estilo entre las cinco tarjetas.
-
-**Si querés usar fotos reales de tu flota:** subilas a `public/flota/` y en
-`src/components/secciones/Flota.tsx` reemplazá el `<AutoIlustracion />` por un
-`<Image />` de Next.
+Las ilustraciones de las categorías sin foto son **vectores dibujados a mano**
+(`AutoIlustracion.tsx`): se ven nítidas en cualquier pantalla y pesan pocos KB.
 
 ### La imagen para compartir en redes
 
