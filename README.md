@@ -16,8 +16,8 @@ tres archivos:
 
 | Campo | Qué poner |
 |---|---|
-| `telefono` | Tu teléfono real, con el formato que quieras mostrar |
-| `whatsapp` | Tu WhatsApp **solo con dígitos**, con código de país. Ej: `17865551234` |
+| ~~`whatsapp`~~ | ✅ Ya cargado: `13054813777` |
+| `telefono` | Está puesto el mismo número que el WhatsApp. Si atendés llamadas en otra línea, cambialo |
 | `email` | Tu email de reservas |
 | `direccion` | Calle, ciudad, estado y código postal de la oficina |
 | `horarios` | Los horarios reales (el texto que se ve **y** el formato `schema` para Google) |
@@ -86,6 +86,19 @@ el sitemap y los datos de Google apunten bien.
 - **Sin backend.** Todos los botones terminan en un link `wa.me` con el mensaje
   ya escrito. El formulario del hero no envía nada a ningún servidor: arma el
   texto con el aeropuerto, las fechas y la categoría, y abre WhatsApp.
+
+### El mensaje de WhatsApp
+
+Lo arma `src/lib/whatsapp.ts`. Todo mensaje arranca con el saludo de la
+constante `SALUDO` — cambiás esa línea y cambian todos los botones del sitio.
+
+- **Botón suelto** (header, botón flotante, contacto): va solo el saludo.
+  → *"Hola, estoy interesado en rentar un auto."*
+- **Tarjeta de la flota o formulario**: al saludo se le suman los datos que el
+  visitante ya eligió, así no tenés que volver a preguntárselos.
+
+Si querés el saludo pelado en **todos** los casos, borrá el bloque de
+`detalles` de `mensajeConsulta()` y devolvé siempre `SALUDO`.
 
 ```
 src/

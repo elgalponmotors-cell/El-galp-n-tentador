@@ -18,15 +18,18 @@ export const negocio = {
   descripcion:
     "Alquiler de autos con retiro y devolución en los aeropuertos de Miami (MIA) y Fort Lauderdale (FLL). Precios claros, atención en español y entrega en el aeropuerto.",
 
-  /** ⚠️ TODO: reemplazar por el teléfono real del negocio. */
-  telefono: "+1 (786) 000-0000",
+  /**
+   * ⚠️ TODO: confirmar. Por ahora usa el mismo número que el WhatsApp, que es
+   * lo habitual en un negocio chico. Si atendés llamadas en otra línea,
+   * cambialo por esa.
+   */
+  telefono: "+1 (305) 481-3777",
 
   /**
-   * ⚠️ TODO: reemplazar por el WhatsApp real.
-   * Formato para wa.me: código de país + número, SOLO dígitos.
-   * Ejemplo para un número de Miami: "17865551234"
+   * WhatsApp del negocio.
+   * Formato para wa.me: código de país + número, SOLO dígitos y sin el "+".
    */
-  whatsapp: "17860000000",
+  whatsapp: "13054813777",
 
   /** ⚠️ TODO: reemplazar por el email real. */
   email: "reservas@elgalponrentacar.com",

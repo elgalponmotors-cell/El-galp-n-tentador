@@ -20,17 +20,28 @@ export function formatearFecha(iso: string): string {
  * completado. Los campos vacíos simplemente no aparecen, así el mensaje nunca
  * queda con líneas a medio llenar.
  */
+/**
+ * El saludo con el que arranca todo mensaje. Cambiá este texto y cambia en
+ * todos los botones del sitio a la vez.
+ */
+export const SALUDO = "Hola, estoy interesado en rentar un auto.";
+
 export function mensajeConsulta(datos: DatosConsulta = {}): string {
-  const lineas = [`Hola ${negocio.nombreCorto}! Quiero consultar por un alquiler.`];
+  const detalles: string[] = [];
 
-  if (datos.categoria) lineas.push(`• Categoría: ${datos.categoria}`);
-  if (datos.aeropuerto) lineas.push(`• Aeropuerto: ${datos.aeropuerto}`);
-  if (datos.retiro) lineas.push(`• Retiro: ${formatearFecha(datos.retiro)}`);
-  if (datos.devolucion) lineas.push(`• Devolución: ${formatearFecha(datos.devolucion)}`);
+  if (datos.categoria) detalles.push(`• Categoría: ${datos.categoria}`);
+  if (datos.aeropuerto) detalles.push(`• Aeropuerto: ${datos.aeropuerto}`);
+  if (datos.retiro) detalles.push(`• Retiro: ${formatearFecha(datos.retiro)}`);
+  if (datos.devolucion) detalles.push(`• Devolución: ${formatearFecha(datos.devolucion)}`);
 
-  lineas.push("", "¿Me pasan disponibilidad y precio? Gracias!");
+  // Botón suelto (header, botón flotante, contacto): va solo el saludo.
+  if (detalles.length === 0) return SALUDO;
 
-  return lineas.join("\n");
+  // Formulario o tarjeta de la flota: al saludo se le suman los datos que el
+  // visitante ya eligió, así no hay que volver a preguntárselos.
+  return [SALUDO, ...detalles, "", "¿Me pasan disponibilidad y precio? Gracias!"].join(
+    "\n",
+  );
 }
 
 /**
