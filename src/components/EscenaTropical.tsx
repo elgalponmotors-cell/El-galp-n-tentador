@@ -28,7 +28,7 @@ function Palmera({
   return (
     <g
       transform={`translate(${x} ${y}) scale(${invertida ? -escala : escala} ${escala})`}
-      color="#0b3b4a"
+      color="#060203"
     >
       {/* Tronco curvado */}
       <path
@@ -93,26 +93,29 @@ export default function EscenaTropical({ className }: { className?: string }) {
       <defs>
         {/* Las franjas cálidas terminan en el horizonte (y=430 ≈ 72%), que es
             donde arranca el mar. Si se corren más abajo, el atardecer queda
-            tapado por el mar y la arena. */}
+            tapado por el mar y la arena.
+            Los tonos son los del disco del sol del logo: vino en los bordes,
+            frambuesa en el medio y rosa en el centro. */}
         <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#0b3b4a" />
-          <stop offset="24%" stopColor="#1c6b7a" />
-          <stop offset="44%" stopColor="#e2735f" />
-          <stop offset="58%" stopColor="#ff8a6b" />
-          <stop offset="71%" stopColor="#ffc24b" />
-          <stop offset="100%" stopColor="#ffd98a" />
+          <stop offset="0%" stopColor="#0a0406" />
+          <stop offset="26%" stopColor="#3a0d1c" />
+          <stop offset="46%" stopColor="#8e1533" />
+          <stop offset="60%" stopColor="#c5224c" />
+          <stop offset="71%" stopColor="#d52b58" />
+          <stop offset="100%" stopColor="#ec96a8" />
         </linearGradient>
+        {/* El agua refleja el cielo: vino oscuro con el brillo del sol. */}
         <linearGradient id="mar" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#17c7bd" />
-          <stop offset="100%" stopColor="#0b6f78" />
+          <stop offset="0%" stopColor="#a01a3c" />
+          <stop offset="100%" stopColor="#3a0d1c" />
         </linearGradient>
         <linearGradient id="arena" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#ffd9a0" />
-          <stop offset="100%" stopColor="#eeb877" />
+          <stop offset="0%" stopColor="#2c1218" />
+          <stop offset="100%" stopColor="#160709" />
         </linearGradient>
         <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
-          <stop offset="0%" stopColor="#ffd98a" stopOpacity="0.85" />
-          <stop offset="100%" stopColor="#ffd98a" stopOpacity="0" />
+          <stop offset="0%" stopColor="#ec96a8" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#ec96a8" stopOpacity="0" />
         </radialGradient>
       </defs>
 
@@ -120,10 +123,10 @@ export default function EscenaTropical({ className }: { className?: string }) {
 
       {/* Sol bajo sobre el horizonte */}
       <circle cx="840" cy="398" r="200" fill="url(#halo)" />
-      <circle cx="840" cy="398" r="62" fill="#fff0c4" />
+      <circle cx="840" cy="398" r="62" fill="#ffdfe6" />
 
       {/* Nubes livianas */}
-      <g fill="#ffffff" opacity="0.22">
+      <g fill="#ec96a8" opacity="0.16">
         <ellipse cx="250" cy="120" rx="120" ry="26" />
         <ellipse cx="330" cy="106" rx="80" ry="20" />
         <ellipse cx="1120" cy="170" rx="140" ry="24" />
@@ -131,7 +134,7 @@ export default function EscenaTropical({ className }: { className?: string }) {
       </g>
 
       {/* Skyline */}
-      <g fill="#0b3b4a" opacity="0.92">
+      <g fill="#0a0406" opacity="0.96">
         {torres.map((t) => (
           <rect
             key={t.x}
@@ -145,7 +148,7 @@ export default function EscenaTropical({ className }: { className?: string }) {
       </g>
 
       {/* Ventanas encendidas */}
-      <g fill="#ffc24b" opacity="0.5">
+      <g fill="#ec96a8" opacity="0.45">
         {torres.flatMap((t) =>
           Array.from({ length: Math.floor(t.h / 34) }, (_, fila) => (
             <rect
@@ -162,7 +165,7 @@ export default function EscenaTropical({ className }: { className?: string }) {
 
       {/* Mar con el reflejo del sol */}
       <rect x="0" y="430" width="1440" height="80" fill="url(#mar)" />
-      <g fill="#ffe9b8" opacity="0.6">
+      <g fill="#ffdfe6" opacity="0.5">
         <rect x="808" y="446" width="64" height="6" rx="3" />
         <rect x="792" y="464" width="96" height="6" rx="3" />
         <rect x="816" y="482" width="48" height="6" rx="3" />
@@ -173,8 +176,8 @@ export default function EscenaTropical({ className }: { className?: string }) {
       {/* Orilla: la espuma donde el mar toca la arena. */}
       <path
         d="M0 502c180 20 300-12 480-5s300 27 480 15 300-24 480-9v8H0Z"
-        fill="#fff3dc"
-        opacity="0.7"
+        fill="#d9848f"
+        opacity="0.4"
       />
 
       {/* Palmeras en primer plano */}

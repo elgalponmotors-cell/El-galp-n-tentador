@@ -15,9 +15,9 @@ function hoy(): string {
 }
 
 const etiquetaCampo =
-  "mb-1.5 block text-xs font-semibold uppercase tracking-wide text-profundo-medio";
+  "mb-1.5 block text-xs font-semibold uppercase tracking-wide text-crema-media";
 const campo =
-  "w-full rounded-xl border border-profundo/15 bg-white px-3.5 py-3 text-profundo shadow-sm transition-colors focus:border-turquesa focus:outline-none";
+  "w-full rounded-xl border border-borde bg-noche-media px-3.5 py-3 text-crema shadow-sm transition-colors focus:border-frambuesa focus:outline-none";
 
 export default function FormularioCotizacion() {
   const [aeropuerto, setAeropuerto] = useState<string>(aeropuertos[0].codigo);
@@ -56,13 +56,13 @@ export default function FormularioCotizacion() {
     <form
       onSubmit={enviar}
       noValidate
-      className="rounded-3xl border border-profundo/10 bg-arena/95 p-5 shadow-2xl shadow-profundo/20 backdrop-blur sm:p-6"
+      className="rounded-3xl border border-borde bg-noche-media/95 p-5 shadow-2xl shadow-black/60 backdrop-blur sm:p-6"
       aria-label="Formulario de cotización"
     >
-      <p className="font-[family-name:var(--font-titulo)] text-lg font-bold text-profundo">
+      <p className="font-[family-name:var(--font-titulo)] text-lg font-bold text-crema">
         Pedí tu cotización
       </p>
-      <p className="mt-1 mb-5 text-sm text-profundo-medio">
+      <p className="mt-1 mb-5 text-sm text-crema-media">
         Completá los datos y te respondemos por WhatsApp con el precio final.
       </p>
 
@@ -140,20 +140,20 @@ export default function FormularioCotizacion() {
       </div>
 
       {error && (
-        <p role="alert" className="mt-4 text-sm font-medium text-coral-oscuro">
+        <p role="alert" className="mt-4 text-sm font-medium text-rosa">
           {error}
         </p>
       )}
 
       <button
         type="submit"
-        className="mt-5 flex w-full items-center justify-center gap-2.5 rounded-full bg-turquesa px-6 py-4 text-base font-bold text-white shadow-lg shadow-turquesa/30 transition-colors hover:bg-turquesa-oscuro"
+        className="mt-5 flex w-full items-center justify-center gap-2.5 rounded-full bg-frambuesa px-6 py-4 text-base font-bold text-white shadow-lg shadow-frambuesa/25 transition-colors hover:bg-frambuesa-viva"
       >
         <IconoWhatsapp className="h-5 w-5" />
         Cotizar por WhatsApp
       </button>
 
-      <p className="mt-3 text-center text-xs text-profundo-suave">
+      <p className="mt-3 text-center text-xs text-crema-tenue">
         Se abre WhatsApp con el mensaje ya escrito. No pagás nada todavía.
       </p>
     </form>

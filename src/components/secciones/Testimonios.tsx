@@ -30,10 +30,10 @@ export default function Testimonios() {
   return (
     <section id="testimonios" className="contenedor py-20 lg:py-28">
       <div className="max-w-2xl">
-        <p className="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-turquesa-oscuro">
+        <p className="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-rosa">
           Lo que dicen
         </p>
-        <h2 className="text-3xl font-extrabold text-profundo sm:text-4xl">
+        <h2 className="text-3xl font-extrabold text-crema sm:text-4xl">
           Clientes que ya manejaron con nosotros
         </h2>
       </div>
@@ -42,24 +42,24 @@ export default function Testimonios() {
         {testimonios.map((t) => (
           <li
             key={t.autor}
-            className="flex flex-col rounded-2xl border border-profundo/10 bg-white p-7"
+            className="flex flex-col rounded-2xl border border-borde bg-noche-media p-7"
           >
-            <div aria-hidden className="mb-4 flex gap-1 text-sol">
+            <div aria-hidden className="mb-4 flex gap-1 text-rosa">
               {Array.from({ length: 5 }, (_, i) => (
                 <svg key={i} viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
                   <path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.9 5.7 21.2 7 14.2l-5-4.8 7-.9L12 2Z" />
                 </svg>
               ))}
             </div>
-            <blockquote className="flex-1 leading-relaxed text-profundo-medio">
+            <blockquote className="flex-1 leading-relaxed text-crema-media">
               “{t.texto}”
             </blockquote>
-            <footer className="mt-5 border-t border-profundo/10 pt-4">
-              <p className="flex items-center gap-1.5 font-bold text-profundo">
+            <footer className="mt-5 border-t border-borde pt-4">
+              <p className="flex items-center gap-1.5 font-bold text-crema">
                 {t.autor}
-                <IconoCheck className="h-4 w-4 text-turquesa-oscuro" />
+                <IconoCheck className="h-4 w-4 text-rosa" />
               </p>
-              <p className="text-sm text-profundo-suave">{t.detalle}</p>
+              <p className="text-sm text-crema-tenue">{t.detalle}</p>
             </footer>
           </li>
         ))}

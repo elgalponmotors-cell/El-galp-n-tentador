@@ -1,28 +1,36 @@
 @import "tailwindcss";
 
 /* ───────────────────────────────────────────────────────────────
-   Tema "Tropical Miami"
+   Paleta tomada del logo de El Galpón.
+   Los valores salieron de muestrear la imagen, no de estimarlos:
+   el negro cálido del fondo, el frambuesa del disco del sol, el vino
+   de sus bordes, el rosa de los brillos y el crema del contorno.
+
    Los tokens de @theme se convierten en utilidades de Tailwind:
-   --color-turquesa  →  bg-turquesa, text-turquesa, border-turquesa…
+   --color-frambuesa  →  bg-frambuesa, text-frambuesa, border-frambuesa…
    ─────────────────────────────────────────────────────────────── */
 @theme {
-  --color-turquesa: #0fb5ae;
-  --color-turquesa-oscuro: #0b8a85;
-  --color-turquesa-claro: #d6f5f3;
+  /* Fondo y superficies */
+  --color-noche: #0a0406;
+  --color-noche-suave: #16090c;
+  --color-noche-media: #1f0e13;
+  --color-borde: #35181f;
 
-  --color-coral: #ff6b5a;
-  --color-coral-oscuro: #e04a38;
-  --color-coral-claro: #ffe4e0;
+  /* Frambuesa: el color del sol del logo. Primario, para CTA y acentos. */
+  --color-frambuesa: #d52b58;
+  --color-frambuesa-viva: #e8446f;
+  --color-vino: #8e1533;
+  --color-vino-profundo: #550c1f;
 
-  --color-sol: #ffc24b;
-  --color-sol-claro: #fff2d6;
+  /* Rosa de los brillos. Buen contraste sobre negro: se usa para
+     enlaces y texto de apoyo, donde el frambuesa no llega a AA. */
+  --color-rosa: #ec96a8;
+  --color-rosa-tenue: #c9737f;
 
-  --color-arena: #fff9f2;
-  --color-arena-oscura: #f5ece0;
-
-  --color-profundo: #0b3b4a;
-  --color-profundo-medio: #2d5f6f;
-  --color-profundo-suave: #5c8494;
+  /* Crema del contorno y la tipografía del logo. */
+  --color-crema: #fbf4eb;
+  --color-crema-media: #d9cdc6;
+  --color-crema-tenue: #9b8a86;
 
   --font-titulo: var(--fuente-titulo), ui-sans-serif, system-ui, sans-serif;
   --font-cuerpo: var(--fuente-cuerpo), ui-sans-serif, system-ui, sans-serif;
@@ -32,7 +40,7 @@
    cuando se navega con los enlaces ancla. */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: 7rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -49,10 +57,17 @@ html {
 }
 
 body {
-  background-color: var(--color-arena);
-  color: var(--color-profundo);
+  background-color: var(--color-noche);
+  color: var(--color-crema);
   font-family: var(--font-cuerpo);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Los <select> y <input date> heredan el esquema del sistema. Sin esto, el
+   calendario nativo y las flechas salen en claro sobre nuestro fondo oscuro. */
+input,
+select {
+  color-scheme: dark;
 }
 
 h1,
@@ -65,7 +80,7 @@ h4 {
 
 /* Foco visible y consistente en todo lo interactivo. */
 :where(a, button, input, select, summary):focus-visible {
-  outline: 3px solid var(--color-coral);
+  outline: 3px solid var(--color-rosa);
   outline-offset: 2px;
   border-radius: 4px;
 }

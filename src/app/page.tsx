@@ -21,7 +21,7 @@ export default function Home() {
     <>
       <a
         href="#contenido"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-profundo focus:px-5 focus:py-3 focus:font-semibold focus:text-arena"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-frambuesa focus:px-5 focus:py-3 focus:font-semibold focus:text-white"
       >
         Saltar al contenido
       </a>

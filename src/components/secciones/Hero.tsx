@@ -11,7 +11,7 @@ const sellos = [
 
 export default function Hero() {
   return (
-    <section id="inicio" className="relative overflow-hidden bg-profundo">
+    <section id="inicio" className="relative overflow-hidden bg-noche-suave">
       <EscenaTropical className="absolute inset-0 h-full w-full" />
       {/*
         Velo oscuro para que el texto claro mantenga contraste sobre el
@@ -21,22 +21,22 @@ export default function Hero() {
       */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-b from-profundo/95 via-profundo/80 to-profundo/55 lg:bg-gradient-to-r lg:from-profundo/92 lg:via-profundo/62 lg:to-profundo/20"
+        className="absolute inset-0 bg-gradient-to-b from-noche/95 via-noche/78 to-noche/45 lg:bg-gradient-to-r lg:from-noche/93 lg:via-noche/55 lg:to-noche/10"
       />
 
       <div className="contenedor relative grid items-center gap-12 py-16 lg:grid-cols-[1.05fr_minmax(0,26rem)] lg:gap-16 lg:py-24">
         <div className="max-w-2xl">
-          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-arena/25 bg-arena/10 px-4 py-1.5 text-sm font-semibold text-arena backdrop-blur-sm">
+          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-crema/25 bg-crema/10 px-4 py-1.5 text-sm font-semibold text-crema backdrop-blur-sm">
             {aeropuertos.map((a) => a.codigo).join(" · ")} — Sur de Florida
           </p>
 
-          <h1 className="text-4xl font-extrabold leading-[1.05] text-arena sm:text-5xl lg:text-6xl">
+          <h1 className="text-4xl font-extrabold leading-[1.05] text-crema sm:text-5xl lg:text-6xl">
             Alquilá tu auto en{" "}
-            <span className="text-sol">Miami y Fort Lauderdale</span> sin
+            <span className="text-rosa">Miami y Fort Lauderdale</span> sin
             sorpresas
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-arena/85">
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-crema/85">
             Te esperamos en el aeropuerto con el auto listo. Precio cerrado por
             WhatsApp, millaje ilimitado y atención de verdad, en tu idioma.
           </p>
@@ -45,9 +45,9 @@ export default function Hero() {
             {sellos.map((s) => (
               <li
                 key={s}
-                className="flex items-center gap-2 font-medium text-arena"
+                className="flex items-center gap-2 font-medium text-crema"
               >
-                <IconoCheck className="h-5 w-5 shrink-0 text-turquesa" />
+                <IconoCheck className="h-5 w-5 shrink-0 text-rosa" />
                 {s}
               </li>
             ))}
@@ -56,13 +56,13 @@ export default function Hero() {
           <div className="mt-9 flex flex-wrap gap-3">
             <a
               href="#flota"
-              className="rounded-full bg-arena px-7 py-3.5 font-semibold text-profundo transition-colors hover:bg-white"
+              className="rounded-full bg-crema px-7 py-3.5 font-semibold text-noche transition-colors hover:bg-white"
             >
               Ver la flota
             </a>
             <a
               href="#como-funciona"
-              className="rounded-full border border-arena/35 px-7 py-3.5 font-semibold text-arena transition-colors hover:bg-arena/10"
+              className="rounded-full border border-crema/30 px-7 py-3.5 font-semibold text-crema transition-colors hover:bg-crema/10"
             >
               Cómo funciona
             </a>

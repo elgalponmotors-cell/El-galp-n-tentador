@@ -106,7 +106,7 @@ src/
 │  ├─ layout.tsx      metadata SEO, fuentes y datos estructurados de Google
 │  ├─ page.tsx        arma la página con las secciones
 │  ├─ globals.css     colores y tipografías del sitio
-│  ├─ icon.svg        favicon
+│  ├─ icon.png        favicon (sale del logo)
 │  ├─ sitemap.ts · robots.ts
 ├─ data/              👈 los datos del negocio (lo que vas a editar)
 ├─ lib/whatsapp.ts    arma los links de WhatsApp — un solo lugar
@@ -117,6 +117,35 @@ src/
    ├─ EscenaTropical.tsx   el fondo del inicio
    └─ secciones/           cada sección de la página
 ```
+
+### El logo y la paleta
+
+Los colores del sitio salen del logo: se muestreó la imagen para sacar el negro
+cálido del fondo, el frambuesa del disco del sol, el vino de sus bordes, el rosa
+de los brillos y el crema del contorno. Están definidos como tokens en
+`src/app/globals.css`:
+
+| Token | Color | De dónde sale |
+|---|---|---|
+| `noche` | `#0a0406` | el negro del fondo del logo |
+| `frambuesa` | `#d52b58` | el disco del sol |
+| `vino` | `#8e1533` | los bordes del sol |
+| `rosa` | `#ec96a8` | los brillos |
+| `crema` | `#fbf4eb` | el contorno y la tipografía |
+
+Todo el texto pasa el contraste mínimo AA sobre el fondo oscuro.
+
+**Si cambiás el logo:** reemplazá `scripts/logo-original.jpeg` y corré
+
+```bash
+npm install --no-save playwright && npx playwright install chromium
+node scripts/recortar-logo.mjs
+```
+
+Eso regenera `public/logo.webp` (el del sitio) y `src/app/icon.png` (el favicon).
+El script le quita el fondo negro al JPEG con un flood fill desde los bordes:
+la palmera y el skyline también son negros, así que un umbral simple los
+borraría; el contorno crema del escudo corta la propagación.
 
 ### Los dibujos de los autos
 
@@ -131,7 +160,8 @@ mismo estilo entre las cinco tarjetas.
 ### La imagen para compartir en redes
 
 `public/og.png` es lo que se ve cuando alguien comparte el link por WhatsApp o
-Facebook. Ya está generada y versionada. Solo si querés cambiarle el texto:
+Facebook. Ya está generada y versionada, con el logo y la paleta del sitio.
+Solo si querés cambiarle el texto:
 
 ```bash
 npm install --no-save playwright

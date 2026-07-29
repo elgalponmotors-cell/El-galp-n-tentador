@@ -18,10 +18,10 @@ export default function Header() {
   const [abierto, setAbierto] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-profundo/10 bg-arena/90 backdrop-blur-md">
-      <div className="contenedor flex h-20 items-center justify-between gap-4">
+    <header className="sticky top-0 z-50 border-b border-borde bg-noche/90 backdrop-blur-md">
+      <div className="contenedor flex h-24 items-center justify-between gap-4">
         <a href="#inicio" aria-label={`${negocio.nombre} — ir al inicio`}>
-          <Logo />
+          <Logo alto={80} />
         </a>
 
         <nav aria-label="Principal" className="hidden lg:block">
@@ -30,7 +30,7 @@ export default function Header() {
               <li key={e.href}>
                 <a
                   href={e.href}
-                  className="text-sm font-medium text-profundo-medio transition-colors hover:text-turquesa-oscuro"
+                  className="text-sm font-medium text-crema-media transition-colors hover:text-rosa"
                 >
                   {e.texto}
                 </a>
@@ -42,7 +42,7 @@ export default function Header() {
         <div className="hidden items-center gap-3 md:flex">
           <a
             href={linkTelefono()}
-            className="flex items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold text-profundo transition-colors hover:text-turquesa-oscuro"
+            className="flex items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold text-crema transition-colors hover:text-rosa"
           >
             <IconoTelefono className="h-4 w-4" />
             <span className="hidden xl:inline">{negocio.telefono}</span>
@@ -52,7 +52,7 @@ export default function Header() {
             href={linkWhatsApp()}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-full bg-turquesa px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-turquesa-oscuro"
+            className="flex items-center gap-2 rounded-full bg-frambuesa px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-frambuesa-viva"
           >
             <IconoWhatsapp className="h-4 w-4" />
             Reservar
@@ -64,7 +64,7 @@ export default function Header() {
           onClick={() => setAbierto((v) => !v)}
           aria-expanded={abierto}
           aria-controls="menu-movil"
-          className="flex h-11 w-11 items-center justify-center rounded-xl border border-profundo/15 text-profundo lg:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-xl border border-borde text-crema lg:hidden"
         >
           <span className="sr-only">
             {abierto ? "Cerrar menú" : "Abrir menú"}
@@ -90,7 +90,7 @@ export default function Header() {
       {abierto && (
         <div
           id="menu-movil"
-          className="border-t border-profundo/10 bg-arena lg:hidden"
+          className="border-t border-borde bg-noche lg:hidden"
         >
           <nav aria-label="Principal móvil" className="contenedor py-4">
             <ul className="flex flex-col">
@@ -99,7 +99,7 @@ export default function Header() {
                   <a
                     href={e.href}
                     onClick={() => setAbierto(false)}
-                    className="block border-b border-profundo/5 py-3.5 font-medium text-profundo"
+                    className="block border-b border-borde/60 py-3.5 font-medium text-crema"
                   >
                     {e.texto}
                   </a>
@@ -111,14 +111,14 @@ export default function Header() {
                 href={linkWhatsApp()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 rounded-full bg-turquesa px-5 py-3.5 font-semibold text-white"
+                className="flex items-center justify-center gap-2 rounded-full bg-frambuesa px-5 py-3.5 font-semibold text-white"
               >
                 <IconoWhatsapp className="h-5 w-5" />
                 Reservar por WhatsApp
               </a>
               <a
                 href={linkTelefono()}
-                className="flex items-center justify-center gap-2 rounded-full border border-profundo/20 px-5 py-3.5 font-semibold text-profundo"
+                className="flex items-center justify-center gap-2 rounded-full border border-borde px-5 py-3.5 font-semibold text-crema"
               >
                 <IconoTelefono className="h-5 w-5" />
                 {negocio.telefono}

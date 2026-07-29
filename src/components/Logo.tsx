@@ -1,65 +1,34 @@
+import Image from "next/image";
 import { negocio } from "@/data/negocio";
 
 /**
- * Wordmark del negocio: ícono + nombre, en tipografía del sitio.
- * Se dibuja en SVG/CSS en lugar de usar una imagen para que se vea nítido
- * en cualquier pantalla y cambie de color según el fondo.
+ * El logo real del negocio.
+ *
+ * `public/logo.webp` sale del logo original recortado: el archivo que nos
+ * pasaron era un JPEG con fondo negro, así que se le quitó el fondo para que
+ * el escudo se apoye sobre cualquier color. Ver `scripts/recortar-logo.mjs`.
+ *
+ * El escudo ya incluye el nombre, por eso no lleva texto al lado: duplicarlo
+ * competiría con el logo.
  */
 export default function Logo({
   className = "",
-  variante = "oscuro",
+  alto = 60,
 }: {
   className?: string;
-  variante?: "oscuro" | "claro";
+  /** Alto en píxeles. El ancho se calcula solo para no deformarlo. */
+  alto?: number;
 }) {
-  const claro = variante === "claro";
+  const proporcion = 480 / 492;
 
   return (
-    <span className={`flex items-center gap-2.5 ${className}`}>
-      <svg
-        viewBox="0 0 64 64"
-        className="h-9 w-9 shrink-0"
-        aria-hidden="true"
-        focusable="false"
-      >
-        <rect
-          width="64"
-          height="64"
-          rx="14"
-          fill={claro ? "#fff9f2" : "#0b3b4a"}
-        />
-        <path
-          d="M10 44v-6c0-3 2-5 5-6l12-2 8-8c2-2 4-3 6-3h9c3 0 5 1 7 3l7 8v10c0 2-1 3-3 3H13c-2 0-3-1-3-3Z"
-          fill="#0fb5ae"
-        />
-        <path
-          d="M30 30V21h5v9Zm9 0v-9h5c1 0 2 0 3 1l6 8Z"
-          fill={claro ? "#0b3b4a" : "#cfe9f2"}
-        />
-        <circle cx="22" cy="46" r="6" fill={claro ? "#0b3b4a" : "#fff9f2"} />
-        <circle cx="22" cy="46" r="2.5" fill={claro ? "#fff9f2" : "#0b3b4a"} />
-        <circle cx="46" cy="46" r="6" fill={claro ? "#0b3b4a" : "#fff9f2"} />
-        <circle cx="46" cy="46" r="2.5" fill={claro ? "#fff9f2" : "#0b3b4a"} />
-        <circle cx="50" cy="16" r="7" fill="#ffc24b" />
-      </svg>
-
-      <span className="flex flex-col leading-none">
-        <span
-          className={`font-[family-name:var(--font-titulo)] text-lg font-extrabold tracking-tight ${
-            claro ? "text-arena" : "text-profundo"
-          }`}
-        >
-          El Galpón
-        </span>
-        <span
-          className={`text-[0.65rem] font-semibold uppercase tracking-[0.18em] ${
-            claro ? "text-turquesa" : "text-turquesa-oscuro"
-          }`}
-        >
-          Rent a Car
-        </span>
-      </span>
-      <span className="sr-only">{negocio.nombre}</span>
-    </span>
+    <Image
+      src="/logo.webp"
+      alt={negocio.nombre}
+      width={Math.round(alto * proporcion)}
+      height={alto}
+      priority
+      className={className}
+    />
   );
 }

@@ -21,10 +21,10 @@ type Props = {
   className?: string;
 };
 
-const VIDRIO = "#cfe9f2";
-const VIDRIO_BORDE = "#0b3b4a";
-const NEUMATICO = "#243b45";
-const LLANTA = "#e8eef0";
+const VIDRIO = "#efdfe3";
+const VIDRIO_BORDE = "#14090c";
+const NEUMATICO = "#170d10";
+const LLANTA = "#e6dad6";
 
 /** El neumático siempre apoya en el piso (y=176), así todos quedan alineados. */
 function Rueda({ cx, r = 28 }: { cx: number; r?: number }) {
@@ -41,11 +41,11 @@ function Rueda({ cx, r = 28 }: { cx: number; r?: number }) {
 function Piso() {
   return (
     <g>
-      <ellipse cx={200} cy={180} rx={168} ry={9} fill="#0b3b4a" opacity={0.12} />
+      <ellipse cx={200} cy={180} rx={168} ry={9} fill="#000000" opacity={0.35} />
       <path
         d="M40 176h320"
-        stroke="#0b3b4a"
-        strokeOpacity={0.18}
+        stroke="#000000"
+        strokeOpacity={0.4}
         strokeWidth={2.5}
         strokeLinecap="round"
       />
@@ -57,8 +57,8 @@ function Piso() {
 function Luces({ frente, atras }: { frente: number; atras: number }) {
   return (
     <g>
-      <rect x={frente} y={116} width={14} height={9} rx={4} fill="#ffc24b" />
-      <rect x={atras} y={116} width={11} height={9} rx={4} fill="#ff6b5a" />
+      <rect x={frente} y={116} width={14} height={9} rx={4} fill="#ffe9c4" />
+      <rect x={atras} y={116} width={11} height={9} rx={4} fill="#d52b58" />
     </g>
   );
 }
@@ -281,9 +281,11 @@ export const coloresFlota: Record<
   CategoriaAuto["id"],
   { color: string; colorOscuro: string; fondo: string }
 > = {
-  economico: { color: "#0fb5ae", colorOscuro: "#0b8a85", fondo: "#d6f5f3" },
-  sedan: { color: "#2d5f6f", colorOscuro: "#0b3b4a", fondo: "#dde9ed" },
-  suv: { color: "#ff6b5a", colorOscuro: "#e04a38", fondo: "#ffe4e0" },
-  minivan: { color: "#5c8494", colorOscuro: "#3d626f", fondo: "#e2ecf0" },
-  convertible: { color: "#ffc24b", colorOscuro: "#e09f22", fondo: "#fff2d6" },
+  // Colores de flota real (rosa, plata, vino, gris, frambuesa) dentro de la
+  // paleta del logo. El `fondo` es el tinte oscuro de la tarjeta.
+  economico: { color: "#ec96a8", colorOscuro: "#c06478", fondo: "#2a1219" },
+  sedan: { color: "#d9cdc6", colorOscuro: "#a1948d", fondo: "#20121a" },
+  suv: { color: "#8e1533", colorOscuro: "#550c1f", fondo: "#26101a" },
+  minivan: { color: "#6b4a52", colorOscuro: "#452e34", fondo: "#1d1116" },
+  convertible: { color: "#d52b58", colorOscuro: "#8e1533", fondo: "#2c101c" },
 };

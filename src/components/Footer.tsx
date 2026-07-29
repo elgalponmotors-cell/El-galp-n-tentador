@@ -7,24 +7,24 @@ export default function Footer() {
   const anio = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-profundo/10 bg-profundo text-arena">
+    <footer className="border-t border-borde bg-noche-suave text-crema">
       <div className="contenedor grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div className="sm:col-span-2 lg:col-span-1">
-          <Logo variante="claro" />
-          <p className="mt-4 max-w-xs leading-relaxed text-arena/70">
+          <Logo alto={112} />
+          <p className="mt-4 max-w-xs leading-relaxed text-crema/70">
             Alquiler de autos con entrega en los aeropuertos de Miami y Fort
             Lauderdale. Atención en español.
           </p>
         </div>
 
         <div>
-          <h2 className="font-bold text-arena">Flota</h2>
+          <h2 className="font-bold text-crema">Flota</h2>
           <ul className="mt-4 space-y-2.5">
             {flota.map((c) => (
               <li key={c.id}>
                 <a
                   href="#flota"
-                  className="text-arena/70 transition-colors hover:text-turquesa"
+                  className="text-crema/70 transition-colors hover:text-rosa"
                 >
                   {c.nombre}
                 </a>
@@ -34,13 +34,13 @@ export default function Footer() {
         </div>
 
         <div>
-          <h2 className="font-bold text-arena">Aeropuertos</h2>
+          <h2 className="font-bold text-crema">Aeropuertos</h2>
           <ul className="mt-4 space-y-2.5">
             {aeropuertos.map((a) => (
               <li key={a.codigo}>
                 <a
                   href="#aeropuertos"
-                  className="text-arena/70 transition-colors hover:text-turquesa"
+                  className="text-crema/70 transition-colors hover:text-rosa"
                 >
                   {a.codigo} — {a.ciudad}
                 </a>
@@ -50,14 +50,14 @@ export default function Footer() {
         </div>
 
         <div>
-          <h2 className="font-bold text-arena">Contacto</h2>
+          <h2 className="font-bold text-crema">Contacto</h2>
           <ul className="mt-4 space-y-2.5">
             <li>
               <a
                 href={linkWhatsApp()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-arena/70 transition-colors hover:text-turquesa"
+                className="text-crema/70 transition-colors hover:text-rosa"
               >
                 WhatsApp
               </a>
@@ -65,7 +65,7 @@ export default function Footer() {
             <li>
               <a
                 href={linkTelefono()}
-                className="text-arena/70 transition-colors hover:text-turquesa"
+                className="text-crema/70 transition-colors hover:text-rosa"
               >
                 {negocio.telefono}
               </a>
@@ -73,12 +73,12 @@ export default function Footer() {
             <li>
               <a
                 href={`mailto:${negocio.email}`}
-                className="break-all text-arena/70 transition-colors hover:text-turquesa"
+                className="break-all text-crema/70 transition-colors hover:text-rosa"
               >
                 {negocio.email}
               </a>
             </li>
-            <li className="text-arena/70">{negocio.horarios.texto}</li>
+            <li className="text-crema/70">{negocio.horarios.texto}</li>
           </ul>
 
           {(negocio.redes.instagram || negocio.redes.facebook) && (
@@ -89,7 +89,7 @@ export default function Footer() {
                     href={negocio.redes.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-arena/10 transition-colors hover:bg-arena/20"
+                    className="flex h-10 w-10 items-center justify-center rounded-full bg-crema/10 transition-colors hover:bg-crema/20"
                   >
                     <span className="sr-only">Instagram</span>
                     <svg
@@ -113,7 +113,7 @@ export default function Footer() {
                     href={negocio.redes.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-arena/10 transition-colors hover:bg-arena/20"
+                    className="flex h-10 w-10 items-center justify-center rounded-full bg-crema/10 transition-colors hover:bg-crema/20"
                   >
                     <span className="sr-only">Facebook</span>
                     <svg
@@ -132,8 +132,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-arena/10">
-        <div className="contenedor flex flex-col gap-2 py-6 text-sm text-arena/60 sm:flex-row sm:items-center sm:justify-between">
+      <div className="border-t border-borde">
+        <div className="contenedor flex flex-col gap-2 py-6 text-sm text-crema/60 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {anio} {negocio.nombre}. Todos los derechos reservados.
           </p>
